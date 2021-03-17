@@ -4,7 +4,7 @@
       <label>
         <input type="checkbox">{{ thing }}
       </label>
-      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   name: 'Todo',
   props: {
     thing: String
+  },
+  methods: {
+    deleteTodo: function() {
+      this.$emit('update', this.thing);
+    }
   }
 }
 </script>

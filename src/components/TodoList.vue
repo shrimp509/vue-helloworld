@@ -5,7 +5,7 @@
       <input v-model="newTodo" @keyup.enter='addNewTodo'>
       <br><br>
       <li v-for="thing in things" :key="thing.id">
-        <Todo :thing="thing" />
+        <Todo :thing="thing" @update="updateThings"/>
       </li>
     </ul>
   </div>
@@ -31,6 +31,10 @@ export default {
     addNewTodo: function() {
       this.things.push(this.newTodo);
       this.newTodo = "";
+    },
+    updateThings: function(thing) {
+      var index = this.things.indexOf(thing);
+      this.things.splice(index, 1);
     }
   }
 }
