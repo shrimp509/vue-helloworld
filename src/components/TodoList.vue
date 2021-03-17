@@ -1,6 +1,9 @@
 <template>
   <div class="todo">
+    <h1>TODO Practice</h1>
     <ul>
+      <input v-model="newTodo" @keyup.enter='addNewTodo'>
+      <br><br>
       <li v-for="thing in things" :key="thing.id">
         <Todo :thing="thing" />
       </li>
@@ -18,12 +21,26 @@ export default {
   },
   props: {
     things: Array
+  },
+  data() {
+    return {
+      newTodo: ""
+    }
+  },
+  methods: {
+    addNewTodo: function() {
+      this.things.push(this.newTodo);
+      this.newTodo = "";
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+div {
+  text-align: left;
+}
 ul {
     list-style-type:none;
 }
