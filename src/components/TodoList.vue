@@ -29,6 +29,9 @@ export default {
   },
   methods: {
     addNewTodo: function() {
+      if(this.newTodo.length <= 1) {
+        return;
+      }
       this.things.push(this.newTodo);
       this.newTodo = "";
     },
