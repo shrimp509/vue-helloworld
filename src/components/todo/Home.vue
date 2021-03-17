@@ -1,21 +1,20 @@
 <template>
   <div id="app">
-    <h1>Home Page</h1>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <TodoHome />
+    <TodoList :things="things"/>
   </div>
 </template>
 
 <script>
-import TodoHome from './components/todo/Home.vue'
+import TodoList from './TodoList.vue'
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
-    TodoHome
+    TodoList
   },
   data() {
     return {
+      things: ['First thing', 'Second todo']
     }
   }
 }
@@ -29,5 +28,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+TodoList {
+  text-align: center;
 }
 </style>
