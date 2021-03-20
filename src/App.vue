@@ -1,25 +1,13 @@
 <template>
   <div id="app">
-    <h1>Home Page</h1>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <TodoHome />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/yo/hihi">HiHi</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import TodoHome from './components/todo/Home.vue'
-
-export default {
-  name: 'App',
-  components: {
-    TodoHome
-  },
-  data() {
-    return {
-    }
-  }
-}
-</script>
 
 <style>
 #app {
@@ -28,6 +16,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
