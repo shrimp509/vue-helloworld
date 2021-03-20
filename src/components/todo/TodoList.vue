@@ -32,7 +32,7 @@ export default {
       if(this.newTodo.length <= 1) {
         return;
       }
-      this.things.push(this.newTodo);
+      this.things.push({ content: this.newTodo, checked: false });
       this.newTodo = "";
     },
     updateThings: function(thing) {

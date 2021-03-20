@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <TodoList :things="things"/>
+    <TodoList id="todo_list" :things="things"/>
   </div>
 </template>
 
 <script>
-import TodoList from './TodoList.vue'
+import TodoList from '../components/todo/TodoList.vue'
 
 export default {
   name: 'Home',
@@ -14,7 +14,10 @@ export default {
   },
   data() {
     return {
-      things: ['First thing', 'Second todo']
+      things: [
+        { content: 'First thing', checked: true },
+        { content: 'Second todo', checked: false }
+      ]
     }
   }
 }
@@ -30,7 +33,4 @@ export default {
   margin-top: 60px;
 }
 
-TodoList {
-  text-align: center;
-}
 </style>
