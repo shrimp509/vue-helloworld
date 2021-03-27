@@ -1,11 +1,11 @@
 <template>
   <div class="todo">
-    <h1>TODO Practice</h1>
+    <h1>{{ todoList.list_name }}</h1>
     <ul>
       <input v-model="newTodo" @keyup.enter='addNewTodo'>
       <br><br>
-      <li v-for="thing in things" :key="thing.id">
-        <Todo :thing="thing" @update="updateThings"/>
+      <li v-for="todo in todoList.todos" :key="todo.content">
+        <Todo :todo="todo" @delete="deleteTodo"/>
       </li>
     </ul>
   </div>
@@ -20,7 +20,7 @@ export default {
     Todo
   },
   props: {
-    things: Array
+    todoList: Object
   },
   data() {
     return {
@@ -29,15 +29,20 @@ export default {
   },
   methods: {
     addNewTodo: function() {
+      // avoid create empty todo
       if(this.newTodo.length <= 1) {
         return;
       }
-      this.things.push({ content: this.newTodo, checked: false });
+      this.todoList.todos.push({ content: this.newTodo, check_status: 'todo' });
       this.newTodo = "";
     },
-    updateThings: function(thing) {
-      var index = this.things.indexOf(thing);
-      this.things.splice(index, 1);
+    deleteTodo: function(todo) {
+      // todos: [{id: 5}, {id: 3}, ...]
+      var index = this.todoList.todos.indexOf(todo);
+      if(index == -1) {
+        return
+      }
+      this.todoList.todos.splice(index, 1);
     }
   }
 }

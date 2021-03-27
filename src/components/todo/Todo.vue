@@ -2,7 +2,7 @@
   <div class="todo">
     <li>
       <label class="checked">
-        <input type="checkbox" v-model="thing.checked">{{ thing.content }}
+        <input type="checkbox" v-model="todo.check_status">{{ todo.content }}
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
@@ -13,16 +13,15 @@
 export default {
   name: 'Todo',
   props: {
-    thing: Object
+    todo: Object
   },
   data() {
     return {
-      checkStyle: "line-through"
     }
   },
   methods: {
     deleteTodo: function() {
-      this.$emit('update', this.thing.content);
+      this.$emit('delete', this.todo);
     }
   }
 }
