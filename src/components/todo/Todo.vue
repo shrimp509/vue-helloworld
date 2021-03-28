@@ -1,8 +1,8 @@
 <template>
   <div class="todo">
     <li>
-      <label class="checked">
-        <input type="checkbox" v-model="todo.check_status">{{ todo.content }}
+      <label>
+        <input type="checkbox" v-model="checkStatus">{{ todo.content }}
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
@@ -22,6 +22,19 @@ export default {
   methods: {
     deleteTodo: function() {
       this.$emit('delete', this.todo);
+    }
+  },
+  computed: {
+    checkStatus: {
+      cache: false,
+      set: function(new_status) {
+        this.todo.check_status = new_status == true ? 'done' : 'todo';
+        console.log(this.todo);
+      },
+      get: function() {
+        var status = this.todo.check_status;
+        return status == 'done' || status == 'canceled' ? true : false;
+      }
     }
   }
 }
