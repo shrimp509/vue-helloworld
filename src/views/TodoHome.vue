@@ -1,10 +1,12 @@
 <template>
 <div id="app">
-  <TodoList v-for="list in todoLists" :key="list.list_name" :todoList="list" class="relative-sidebar" />
+  <Sidebar />
+  <TodoList v-for="list in todoLists" :key="list.list_name" :todoList="list" />
 </div>
 </template>
 
 <script>
+import Sidebar from '../components/todo/Sidebar.vue'
 import TodoList from '../components/todo/TodoList.vue'
 
 // check_status: [todo, done, canceled]
@@ -13,6 +15,7 @@ export default {
   name: 'Home',
   components: {
     TodoList,
+    Sidebar,
   },
   data() {
     return {
@@ -62,17 +65,7 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-.relative-sidebar {
-  position: relative;
-  left: 30px;
+* {
+  background-color: #252824;
 }
 </style>

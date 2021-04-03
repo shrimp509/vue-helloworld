@@ -1,9 +1,23 @@
 <template>
   <div class="sidebar">
-    <ul>
-      <li><img src="https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png" width="30px"><a href="/">Home</a></li>
-      <li><a href="/todo">Todo</a></li>
+    <ul id="inbox">
+      <li><img src="@/assets/inbox.png" class="sidebar-icon"><a href="/">收件箱</a></li>
     </ul>
+    <ul id="time-related">
+      <li><img src="@/assets/today.png" class="sidebar-icon"><a href="/today">今天</a></li>
+      <li><img src="@/assets/coming.png" class="sidebar-icon"><a href="/today">即將到來</a></li>
+      <li><img src="@/assets/anytime.png" class="sidebar-icon"><a href="/today">任何時間</a></li>
+      <li><img src="@/assets/someday.png" class="sidebar-icon"><a href="/today">將來某天</a></li>
+    </ul>
+    <ul id="archive">
+      <li><img src="@/assets/record.png" class="sidebar-icon"><a href="/today">記錄簿</a></li>
+      <li><img src="@/assets/trash.png" class="sidebar-icon"><a href="/today">垃圾桶</a></li>
+    </ul>
+    <div id="footer">
+      <hr id="footer-divider">
+      <button id="add-list-btn">＋ 新清單</button>
+      <img src="@/assets/setting.png" class="sidebar-icon" id="footer-setting">
+    </div>
   </div>
 </template>
 
@@ -26,31 +40,85 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+* {
+  font-size: 14px;
+  font-weight: bold;
+  color: #D1D1CF;
+}
+
 ul {
   list-style-type: none;
-  margin: auto;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-bottom: 15px;
+  background-color: inherit;
+  padding: 0px 10px 0px 10px;
 }
 
 li {
   text-align: left;
-  padding-bottom: 10px;
-}
-
-li img {
-  padding-right: 10px;
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .sidebar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 10%; /* Set the width of the sidebar */
+  width: 12%; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
+  z-index: 100; /* Stay on top */
   top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #F5F6F8;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 5%;
+  background-color: #1C1F1B;
+  padding-top: 50px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.sidebar-icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+li:hover {
+  background-color: #393C39;
+}
+
+a:hover {
+  color: #D1D1CF;
+  text-decoration: none;
+}
+
+#footer-divider {
+  margin: 8px;
+  background-color: #121212;
+}
+
+#footer {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 10px;
+  background-color: inherit;
+}
+
+#add-list-btn {
+  margin-left: 20px;
+  float: left;
+  border: 0px;
+  background-color: inherit;
+}
+
+#add-list-btn:hover {
+  border-radius: 5px;
+  border: 1px solid #555555;
+}
+
+#footer-setting {
+  float: right;
+  width: 25px;
+  padding: 3px;
+  background-color: inherit;
+}
+
+#footer-setting:hover {
+  border-radius: 5px;
+  border: 1px solid #555555;
 }
 </style>
