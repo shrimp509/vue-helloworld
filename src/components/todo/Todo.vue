@@ -1,27 +1,37 @@
 <template>
   <div class="todo">
-    <li>
+    <li @contextmenu.prevent="todoContextMenu">
       <label>
         <input type="checkbox" v-model="checkStatus"><p :class="todoClass">{{ todo.content }}</p>
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
+    <Menu :class="isShowMenu" :todo="todo"/>
   </div>
 </template>
 
 <script>
+import Menu from './TodoContextMenu.vue'
+
 export default {
   name: 'Todo',
+  components: {
+    Menu
+  },
   props: {
     todo: Object
   },
   data() {
     return {
+      showMenu: false
     }
   },
   methods: {
     deleteTodo: function() {
       this.$emit('delete', this.todo);
+    },
+    todoContextMenu: function() {
+      this.showMenu = !this.showMenu;
     }
   },
   computed: {
@@ -37,6 +47,9 @@ export default {
     },
     todoClass: function() {
       return this.todo.check_status == 'done' ? 'done' : 'undone';
+    },
+    isShowMenu: function() {
+      return this.showMenu == true ? 'show-menu' : 'hide-menu';
     }
   }
 }
@@ -64,5 +77,13 @@ p {
 
 .undone {
   text-decoration: none;
+}
+
+.show-menu {
+  display: block;
+}
+
+.hide-menu {
+  display: none;
 }
 </style>

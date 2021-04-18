@@ -8,6 +8,7 @@
         <Todo draggable="true" :todo="todo" @delete="deleteTodo"/>
       </li>
     </ul>
+
   </div>
 </template>
 
@@ -43,8 +44,8 @@ export default {
         return
       }
       this.todoList.todos.splice(index, 1);
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -53,7 +54,8 @@ export default {
 div {
   text-align: left;
 }
+
 ul {
-    list-style-type:none;
+  list-style-type:none;
 }
 </style>
