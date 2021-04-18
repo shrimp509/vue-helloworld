@@ -2,7 +2,7 @@
   <div class="todo">
     <li>
       <label>
-        <input type="checkbox" v-model="checkStatus">{{ todo.content }}
+        <input type="checkbox" v-model="checkStatus"><p :class="todoClass">{{ todo.content }}</p>
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
@@ -29,12 +29,14 @@ export default {
       cache: false,
       set: function(new_status) {
         this.todo.check_status = new_status == true ? 'done' : 'todo';
-        console.log(this.todo);
       },
       get: function() {
         var status = this.todo.check_status;
         return status == 'done' || status == 'canceled' ? true : false;
       }
+    },
+    todoClass: function() {
+      return this.todo.check_status == 'done' ? 'done' : 'undone';
     }
   }
 }
@@ -52,7 +54,15 @@ input {
   margin-right: 5px;
 }
 
-.checked {
+p {
+  display: inline;
+}
+
+.done {
   text-decoration: line-through;
+}
+
+.undone {
+  text-decoration: none;
 }
 </style>
