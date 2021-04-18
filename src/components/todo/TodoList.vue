@@ -5,7 +5,7 @@
       <input v-model="newTodo" @keyup.enter='addNewTodo'>
       <br><br>
       <li v-for="todo in todoList.todos" :key="todo.content">
-        <Todo :todo="todo" @delete="deleteTodo"/>
+        <Todo draggable="true" :todo="todo" @delete="deleteTodo"/>
       </li>
     </ul>
   </div>

@@ -1,17 +1,19 @@
 <template>
   <div class="sidebar">
+    <a href="/" id="home">Home</a>
+    <hr>
     <ul id="inbox">
-      <li><img src="@/assets/inbox.png" class="sidebar-icon"><a href="/">收件箱</a></li>
+      <li draggable="true"><img src="@/assets/inbox.png" class="sidebar-icon"><a href="/">收件箱</a></li>
     </ul>
     <ul id="time-related">
-      <li><img src="@/assets/today.png" class="sidebar-icon"><a href="/today">今天</a></li>
-      <li><img src="@/assets/coming.png" class="sidebar-icon"><a href="/today">即將到來</a></li>
-      <li><img src="@/assets/anytime.png" class="sidebar-icon"><a href="/today">任何時間</a></li>
-      <li><img src="@/assets/someday.png" class="sidebar-icon"><a href="/today">將來某天</a></li>
+      <li draggable="true"><img src="@/assets/today.png" class="sidebar-icon"><a href="/today">今天</a></li>
+      <li draggable="true"><img src="@/assets/coming.png" class="sidebar-icon"><a href="/today">即將到來</a></li>
+      <li draggable="true"><img src="@/assets/anytime.png" class="sidebar-icon"><a href="/today">任何時間</a></li>
+      <li draggable="true"><img src="@/assets/someday.png" class="sidebar-icon"><a href="/today">將來某天</a></li>
     </ul>
     <ul id="archive">
-      <li><img src="@/assets/record.png" class="sidebar-icon"><a href="/today">記錄簿</a></li>
-      <li><img src="@/assets/trash.png" class="sidebar-icon"><a href="/today">垃圾桶</a></li>
+      <li draggable="true"><img src="@/assets/record.png" class="sidebar-icon"><a href="/today">記錄簿</a></li>
+      <li draggable="true"><img src="@/assets/trash.png" class="sidebar-icon"><a href="/today">垃圾桶</a></li>
     </ul>
     <div id="footer">
       <hr id="footer-divider">
@@ -83,6 +85,12 @@ li:hover {
 a:hover {
   color: #D1D1CF;
   text-decoration: none;
+}
+
+#home {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 100px;
 }
 
 #footer-divider {

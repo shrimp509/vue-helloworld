@@ -1,7 +1,7 @@
 <template>
 <div id="app">
-  <Sidebar />
-  <TodoList v-for="list in todoLists" :key="list.list_name" :todoList="list" />
+  <Sidebar class="sidebar"/>
+  <TodoList class="todolist" v-for="list in todoLists" :key="list.list_name" :todoList="list" />
 </div>
 </template>
 
@@ -67,5 +67,19 @@ export default {
 <style>
 * {
   background-color: #252824;
+  font-size: 14px;
+  color: #D1D1CF;
+}
+
+.sidebar {
+  position: fixed;
+}
+
+.todolist {
+  float: right;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 88%; /* Set the width of the sidebar */
+  padding-top: 50px;
+  padding-left: 50px;
 }
 </style>
