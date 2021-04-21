@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="app" @contextmenu.prevent="">
   <Sidebar class="sidebar"/>
   <TodoList class="todolist" v-for="list in todoLists" :key="list.list_name" :todoList="list" />
 </div>

@@ -6,7 +6,7 @@
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
-    <Menu :class="isShowMenu" :todo="todo" :position="this.position" />
+    <Menu :class="isShowMenu" :todo="todo" :position="position" />
   </div>
 </template>
 

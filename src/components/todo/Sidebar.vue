@@ -1,19 +1,19 @@
 <template>
   <div class="sidebar">
-    <a href="/" id="home">Home</a>
+    <a href='/' id="home">Home</a>
     <hr>
     <ul id="inbox">
-      <li draggable="true"><img src="@/assets/inbox.png" class="sidebar-icon"><a href="/">收件箱</a></li>
+      <li draggable="true"><img src="@/assets/inbox.png" class="sidebar-icon"><a :href="currentRoutePath + '/inbox'">收件箱</a></li>
     </ul>
     <ul id="time-related">
-      <li draggable="true"><img src="@/assets/today.png" class="sidebar-icon"><a href="/today">今天</a></li>
-      <li draggable="true"><img src="@/assets/coming.png" class="sidebar-icon"><a href="/today">即將到來</a></li>
-      <li draggable="true"><img src="@/assets/anytime.png" class="sidebar-icon"><a href="/today">任何時間</a></li>
-      <li draggable="true"><img src="@/assets/someday.png" class="sidebar-icon"><a href="/today">將來某天</a></li>
+      <li draggable="true"><img src="@/assets/today.png" class="sidebar-icon"><a :href="currentRoutePath + '/today'">今天</a></li>
+      <li draggable="true"><img src="@/assets/coming.png" class="sidebar-icon"><a :href="currentRoutePath + '/coming'">即將到來</a></li>
+      <li draggable="true"><img src="@/assets/anytime.png" class="sidebar-icon"><a :href="currentRoutePath + '/anytime'">任何時間</a></li>
+      <li draggable="true"><img src="@/assets/someday.png" class="sidebar-icon"><a :href="currentRoutePath + '/someday'">將來某天</a></li>
     </ul>
     <ul id="archive">
-      <li draggable="true"><img src="@/assets/record.png" class="sidebar-icon"><a href="/today">記錄簿</a></li>
-      <li draggable="true"><img src="@/assets/trash.png" class="sidebar-icon"><a href="/today">垃圾桶</a></li>
+      <li draggable="true"><img src="@/assets/record.png" class="sidebar-icon"><a :href="currentRoutePath + '/record'">記錄簿</a></li>
+      <li draggable="true"><img src="@/assets/trash.png" class="sidebar-icon"><a :href="currentRoutePath + '/trash'">垃圾桶</a></li>
     </ul>
     <div id="footer">
       <hr id="footer-divider">
@@ -35,6 +35,11 @@ export default {
   },
   methods: {
 
+  },
+  computed: {
+    currentRoutePath() {
+      return this.$route.path;
+    }
   }
 }
 </script>
