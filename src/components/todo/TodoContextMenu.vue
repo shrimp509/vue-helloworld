@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" :style="cssVars">
     <ul id="menu-ul">
       <li><p class="cmd">Cancel</p><p class="shortcut">⌘C</p></li>
       <li><p class="cmd">Delete</p><p class="shortcut">⌘D</p></li>
@@ -11,7 +11,8 @@
 export default {
   name: 'TodoContextMenu',
   props: {
-    todo: Object
+    todo: Object,
+    position: Object
   },
   data() {
     return {
@@ -20,11 +21,17 @@ export default {
   methods: {
   },
   computed: {
+    cssVars() {
+      return {
+        '--top': this.position.y + 'px',
+        '--left': this.position.x + 'px'
+      }
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 * {
   margin: 0px;
   padding: 0px;
@@ -36,6 +43,9 @@ export default {
   border-radius: 5px 5px 5px 5px;
   border: 1px solid #FFFFFF55;
   box-shadow: 3px 5px 10px 1px black;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
 }
 
 #menu-ul {

@@ -6,7 +6,7 @@
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
-    <Menu :class="isShowMenu" :todo="todo"/>
+    <Menu :class="isShowMenu" :todo="todo" :position="this.position" />
   </div>
 </template>
 
@@ -23,15 +23,20 @@ export default {
   },
   data() {
     return {
-      showMenu: false
+      showMenu: false,
+      position: {}
     }
   },
   methods: {
     deleteTodo: function() {
       this.$emit('delete', this.todo);
     },
-    todoContextMenu: function() {
+    todoContextMenu: function(event) {
       this.showMenu = !this.showMenu;
+      this.position = {
+        'x': event.x,
+        'y': event.y
+      }
     }
   },
   computed: {
