@@ -1,5 +1,5 @@
 <template>
-<div id="app" @contextmenu.prevent="">
+<div id="app" @contextmenu.prevent="" v-on:click="closeMenu">
   <Sidebar class="sidebar"/>
   <TodoList class="todolist" v-for="list in todoLists" :key="list.list_name" :todoList="list" />
 </div>
@@ -59,6 +59,11 @@ export default {
           ]
         }
       ]
+    }
+  },
+  methods: {
+    closeMenu: function() {
+      this.$bus.$emit("todo:closeMenu");
     }
   }
 }

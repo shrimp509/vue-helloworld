@@ -6,7 +6,7 @@
       </label>
       <button class="btn btn-danger" @click="deleteTodo">Delete</button>
     </li>
-    <Menu :class="isShowMenu" :todo="todo" :position="position" />
+    <Menu :id="isShowMenu" :todo="todo" :position="position" />
   </div>
 </template>
 
@@ -33,10 +33,22 @@ export default {
     },
     todoContextMenu: function(event) {
       this.showMenu = !this.showMenu;
-      this.position = {
-        'x': event.x,
-        'y': event.y
+
+      if(this.showMenu === true) {
+        this.position = {
+          'x': event.x,
+          'y': event.y
+        }
+
+        // 開啟 context menu 後，監聽 todo:closeMenu 的事件，再把 showMenu 變為 false
+        console.log('register close menu event');
+        this.$bus.$on("todo:closeMenu", () => {
+          this.showMenu = false;
+        });
       }
+    },
+    beforeDestroy: function() {
+      this.$bus.$off("todo:closeMenu");
     }
   },
   computed: {
@@ -84,11 +96,11 @@ p {
   text-decoration: none;
 }
 
-.show-menu {
+#show-menu {
   display: block;
 }
 
-.hide-menu {
+#hide-menu {
   display: none;
 }
 </style>
